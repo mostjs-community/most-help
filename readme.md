@@ -12,11 +12,14 @@
 
 
 ### Tips on raising issues:
- 
+
 - Provide properly formatted code.
 
 - Try to use [Stream diagrams](https://medium.com/@jshvarts/read-marble-diagrams-like-a-pro-3d72934d3ef5) if you think it will help.
 
 - Sometimes you might be using `most` in an certain context, try to separate the stream problem from the general context of useage - you might find that doing that will allow you to resolve the issue yourself !
 
+------
+
+- Migrating from `most@1.0.0` to `most@2.0.0`  ? see [here](./most1to2.md).
 
