@@ -42,9 +42,30 @@ $readFile ("package.json")
 <td>
 
 ```js
-// done in most@2.0.0
+import * as M from "@most/core";
+import { newDefaultScheduler } from "@most/scheduler";
+import * as fs from "fs";
 
+export const readFile = (path) =>
+  M.newStream((sink, scheduler) => {
+    fs.readFile(path, (err, data) => {
+      if (err) {
+        return sink.error(scheduler.currentTime(), err);
+      }
+
+      sink.event(scheduler.currentTime(), data);
+    });
+
+    return { dispose: () => {} };
+  });
+
+const stream = readFile("package.json");
+const scheduler = newDefaultScheduler();
+
+M.runEffects(M.tap(console.log, stream), scheduler);
 ```
+
+https://codesandbox.io/s/wizardly-pasteur-sywhz
 
 </td>
 </tr>
